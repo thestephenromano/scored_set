@@ -2,5 +2,7 @@
 name = "scored_set"
 version = "0.1.0"
 edition = "2021"
+description = "A scored sorted set data structure for Rust"
+license = "Apache-2.0"
 
 [dependencies]
