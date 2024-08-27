@@ -17,7 +17,7 @@ To use `ScoredSortedSet` in your project, add the following to your `Cargo.toml`
 
 ```toml
 [dependencies]
-your-crate-name = "0.1.0"
+scored_set = "0.1.0"
 ```
 
 ## Usage
@@ -25,7 +25,7 @@ your-crate-name = "0.1.0"
 ### Example 1: Adding and Retrieving Items
 
 ```rust
-use your_crate_name::ScoredSortedSet;
+use scored_set::ScoredSortedSet;
 
 fn main() {
     let set: ScoredSortedSet<String> = ScoredSortedSet::new();
@@ -41,7 +41,7 @@ fn main() {
 ### Example 2: Removing an Item
 
 ```rust
-use your_crate_name::ScoredSortedSet;
+use scored_set::ScoredSortedSet;
 
 fn main() {
     let set: ScoredSortedSet<String> = ScoredSortedSet::new();
@@ -60,7 +60,7 @@ fn main() {
 ### Example 3: Updating the Score of an Item
 
 ```rust
-use your_crate_name::ScoredSortedSet;
+use scored_set::ScoredSortedSet;
 
 fn main() {
     let set = ScoredSortedSet::new();
@@ -78,7 +78,7 @@ fn main() {
 ### Example 4: Retrieving the Highest Score
 
 ```rust
-use your_crate_name::ScoredSortedSet;
+use scored_set::ScoredSortedSet;
 
 fn main() {
     let set = ScoredSortedSet::new();
@@ -95,7 +95,7 @@ fn main() {
 ### Example 5: Retrieving all Scores
 
 ```rust
-use your_crate_name::ScoredSortedSet;
+use scored_set::ScoredSortedSet;
 
 fn main() {
     let set = ScoredSortedSet::new();
@@ -114,7 +114,7 @@ fn main() {
 ```rust
 use std::sync::{Arc, Barrier};
 use std::thread;
-use your_crate_name::ScoredSortedSet;
+use scored_set::ScoredSortedSet;
 
 fn main() {
     // Wrap the ScoredSortedSet in an Arc to share it across threads
