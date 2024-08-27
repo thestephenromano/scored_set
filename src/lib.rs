@@ -4,13 +4,13 @@ use std::sync::RwLock;
 /// A thread-safe, scored, and sorted set of items.
 /// The set uses a BTreeMap to store items with their associated scores.
 /// Items with the same score are stored in a vector.
-pub(crate) struct ScoredSortedSet<T> {
+pub struct ScoredSortedSet<T> {
     inner: RwLock<BTreeMap<i32, Vec<T>>>, // Wrap BTreeMap in an RwLock
 }
 
 impl<T> ScoredSortedSet<T> {
     /// Creates a new, empty `ScoredSortedSet`.
-    pub(crate) fn new() -> Self {
+    pub fn new() -> Self {
         ScoredSortedSet {
             inner: RwLock::new(BTreeMap::new()),
         }
@@ -18,7 +18,7 @@ impl<T> ScoredSortedSet<T> {
 
     /// Adds an item with a given score to the set.
     /// If the score already exists, the item is appended to the vector of items for that score.
-    pub(crate) fn add(&self, score: i32, item: T) {
+    pub fn add(&self, score: i32, item: T) {
         let mut inner = self.inner.write().unwrap(); // Lock the RwLock for writing
         inner.entry(score).or_insert_with(Vec::new).push(item);
     }
@@ -26,7 +26,7 @@ impl<T> ScoredSortedSet<T> {
     /// Removes a specified item from the set for a given score.
     /// Returns `true` if the item was successfully removed, `false` otherwise.
     /// If the vector of items for that score becomes empty, the score is removed from the set.
-    pub(crate) fn remove(&self, score: i32, item: &T) -> bool
+    pub fn remove(&self, score: i32, item: &T) -> bool
     where
         T: PartialEq + Clone, // Clone trait bound added for item removal
     {
@@ -57,7 +57,7 @@ impl<T> ScoredSortedSet<T> {
     /// Updates the score of a specified item.
     /// The item is first removed from the old score and then added to the new score.
     /// If the item does not exist at the old score, no change is made.
-    pub(crate) fn update_score(&self, old_score: i32, new_score: i32, item: &T)
+    pub fn update_score(&self, old_score: i32, new_score: i32, item: &T)
     where
         T: PartialEq + Clone,
     {
@@ -76,7 +76,7 @@ impl<T> ScoredSortedSet<T> {
 
     /// Retrieves a clone of the items associated with a given score.
     /// Returns `None` if the score does not exist in the set.
-    pub(crate) fn get(&self, score: i32) -> Option<Vec<T>>
+    pub fn get(&self, score: i32) -> Option<Vec<T>>
     where
         T: Clone, // Ensure T can be cloned
     {
