@@ -2,6 +2,7 @@
 name = "scored_set"
 version = "0.1.3"
 edition = "2021"
+authors = ["Stephen Romano <thestephenromano@gmail.com>"]
 description = "A scored sorted set data structure for Rust"
 license = "Apache-2.0"
 
