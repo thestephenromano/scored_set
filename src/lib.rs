@@ -86,7 +86,7 @@ impl<T> ScoredSortedSet<T> {
 
     /// Returns a vector containing the top `n` highest scores and their associated items.
     /// The vector is sorted in descending order of scores.
-    fn highest_scores(&self, n: usize) -> Vec<(i32, Vec<T>)>
+    pub fn highest_scores(&self, n: usize) -> Vec<(i32, Vec<T>)>
     where
         T: Clone, // Ensure T can be cloned
     {
@@ -101,7 +101,7 @@ impl<T> ScoredSortedSet<T> {
 
     /// Retrieves the highest score and its associated items.
     /// Returns `None` if the set is empty.
-    fn highest_score(&self) -> Option<(i32, Vec<T>)>
+    pub fn highest_score(&self) -> Option<(i32, Vec<T>)>
     where
         T: Clone, // Ensure T can be cloned
     {
@@ -115,7 +115,7 @@ impl<T> ScoredSortedSet<T> {
 
     /// Retrieves the lowest score and its associated items.
     /// Returns `None` if the set is empty.
-    fn lowest_score(&self) -> Option<(i32, Vec<T>)>
+    pub fn lowest_score(&self) -> Option<(i32, Vec<T>)>
     where
         T: Clone, // Ensure T can be cloned
     {
@@ -127,7 +127,7 @@ impl<T> ScoredSortedSet<T> {
     }
 
     /// Returns a vector containing all the scores in the set in ascending order.
-    fn all_scores(&self) -> Vec<i32> {
+    pub fn all_scores(&self) -> Vec<i32> {
         let inner = self.inner.read().unwrap();
         inner.keys().cloned().collect()
     }
